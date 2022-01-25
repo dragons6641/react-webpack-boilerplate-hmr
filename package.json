@@ -4,9 +4,9 @@
   "description": "https://www.notion.so/TIL-0326bb9d8d244c08b7ff7cc7cde959a1",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.config.development.js",
+    "dev": "webpack-dev-server --env env=dev",
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=production webpack --mode production --config webpack.config.production.js"
+    "build": "cross-env NODE_ENV=production webpack --mode production --env env=prod"
   },
   "repository": {
     "type": "git",
@@ -42,6 +42,7 @@
     "style-loader": "^3.3.1",
     "webpack": "^5.67.0",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.7.3"
+    "webpack-dev-server": "^4.7.3",
+    "webpack-merge": "^5.8.0"
   }
 }
