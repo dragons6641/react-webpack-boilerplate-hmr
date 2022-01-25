@@ -1,6 +1,6 @@
-const commonPaths = require("./common-paths");
-const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const commonPaths = require("./common-paths");
 
 const config = {
   mode: "production",
@@ -8,7 +8,7 @@ const config = {
     app: [`${commonPaths.appEntry}/index.js`],
   },
   output: {
-    filename: "static/[name].[hash].js",
+    filename: "static/[name].[fullhash].js",
   },
   devtool: "source-map",
   module: {
@@ -39,6 +39,31 @@ const config = {
               },
             },
           },
+        ],
+        test: /(\.scss|\.sass)$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              importLoaders: 1,
+              sourceMap: true,
+            },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              config: {
+                ctx: {
+                  autoprefixer: {
+                    browsers: "last 2 versions",
+                  },
+                },
+              },
+            },
+          },
+          { loader: "sass-loader" },
         ],
       },
     ],

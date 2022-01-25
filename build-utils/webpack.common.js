@@ -1,7 +1,8 @@
-const commonPaths = require("./common-paths");
-const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const commonPaths = require("./common-paths");
+
+const URL_LOADER_LIMIT = 10000;
 const config = {
   entry: {
     vendor: ["semantic-ui-react"],
@@ -13,9 +14,39 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"],
+        use: [
+          {
+            loader: "babel-loader",
+          },
+        ],
+      },
+      {
+        test: /\.(ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              publicPath: commonPaths.outputPath,
+              name: "[name].[ext]?[fullhash]",
+            },
+          },
+          {
+            loader: "url-loader",
+            options: {
+              publicPath: commonPaths.outputPath,
+              name: "[name].[ext]?[fullhash]",
+              limit: URL_LOADER_LIMIT,
+            },
+          },
+        ],
+        test: /\.txt$/,
+        use: [
+          {
+            loader: "raw-loader",
+          },
+        ],
       },
     ],
   },
