@@ -2,7 +2,7 @@
   "name": "react-webpack-boilerplate-hmr",
   "version": "1.0.0",
   "description": "https://www.notion.so/TIL-0326bb9d8d244c08b7ff7cc7cde959a1",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "dev": "webpack-dev-server --env env=dev",
     "dev:bundleanalyzer": "npm run dev --env addons=bundleanalyzer",
