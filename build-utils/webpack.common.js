@@ -5,6 +5,7 @@ const commonPaths = require("./common-paths");
 const URL_LOADER_LIMIT = 10000;
 const config = {
   entry: {
+    app: [`${commonPaths.appEntry}/index.jsx`],
     vendor: ["semantic-ui-react"],
   },
   output: {
@@ -69,7 +70,7 @@ const config = {
     }),
   ],
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".js", ".jsx", "..."],
   },
 };
 

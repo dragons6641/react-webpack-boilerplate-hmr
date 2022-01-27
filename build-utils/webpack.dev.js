@@ -1,14 +1,10 @@
 const webpack = require("webpack");
 
-const commonPaths = require("./common-paths");
 const banner = require("./banner.js");
 
 const port = process.env.PORT || 3000;
 const config = {
   mode: "development",
-  entry: {
-    app: `${commonPaths.appEntry}/index.jsx`,
-  },
   output: {
     filename: "[name].[fullhash].js",
   },
