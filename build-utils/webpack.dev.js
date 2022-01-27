@@ -43,7 +43,11 @@ const config = {
   optimization: {
     usedExports: true,
   },
-  plugins: [new webpack.BannerPlugin(banner), new webpack.DefinePlugin({})],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.BannerPlugin(banner),
+    new webpack.DefinePlugin({}),
+  ],
   devServer: {
     host: "localhost",
     port: port,
