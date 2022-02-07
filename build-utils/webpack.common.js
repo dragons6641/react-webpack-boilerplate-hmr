@@ -42,6 +42,8 @@ const config = {
             },
           },
         ],
+      },
+      {
         test: /\.txt$/,
         use: [
           {
